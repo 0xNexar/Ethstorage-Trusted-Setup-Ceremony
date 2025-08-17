@@ -25,6 +25,16 @@ EOF
 echo -e "\e[0m"
 sleep 2
 
+
+# Ensure curl or wget is installed
+# ----------------------------
+if ! command -v curl &> /dev/null && ! command -v wget &> /dev/null; then
+    echo "⚠️ curl and wget not found. Installing..."
+    sudo apt update && sudo apt install -y curl wget
+fi
+
+# ----------------------------
+
 echo "🔄 Updating & upgrading system..."
 sudo apt update && sudo apt upgrade -y
 
