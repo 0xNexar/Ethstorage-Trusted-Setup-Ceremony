@@ -107,6 +107,9 @@ phase2cli auth
 ### 8. Start Contribution in Screen
 ```bash
 screen -S contribute
+```
+
+```bash
 phase2cli contribute
 ```
 
