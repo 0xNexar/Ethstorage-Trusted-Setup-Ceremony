@@ -84,6 +84,9 @@ mkdir -p ~/ceremony && cd ~/ceremony
 echo "⬇️ Installing ceremony CLI..."
 npm install -g @p0tion/phase2cli
 
+echo "⚙️ Fixing IPv6 precedence..."
+sudo bash -c 'echo "precedence ::ffff:0:0/96  100" >> /etc/gai.conf'
+
 echo "🔑 Authenticating with GitHub..."
 phase2cli auth
 
@@ -92,8 +95,6 @@ echo "   we’ll start the contribution in a screen session."
 
 read -p "👉 Press ENTER once authentication is complete..."
 
-# Start contribution in an interactive screen session
-echo "🎬 Starting contribution in a screen session..."
-echo "Use Ctrl+A then D to detach and 'screen -r contribute' to reattach later."
-screen -S contribute
-phase2cli contribute
+echo "🎬 Starting contribution inside a screen session..."
+screen -S contribute bash -c "phase2cli contribute"
+
