@@ -92,5 +92,8 @@ echo "   we’ll start the contribution in a screen session."
 
 read -p "👉 Press ENTER once authentication is complete..."
 
-echo "🎬 Starting contribution inside a screen session..."
-screen -S contribute bash -c "phase2cli contribute"
+# Start contribution in an interactive screen session
+echo "🎬 Starting contribution in a screen session..."
+echo "Use Ctrl+A then D to detach and 'screen -r contribute' to reattach later."
+screen -S contribute
+phase2cli contribute
